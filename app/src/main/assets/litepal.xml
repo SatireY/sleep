@@ -1,0 +1,11 @@
+<litepal>
+
+    <dbname value="sleep" />
+
+    <version value="1" />
+
+    <list>
+        <mapping class="com.example.sleep.db.User" />
+    </list>
+
+</litepal>
