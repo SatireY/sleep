@@ -1,24 +1,12 @@
 package com.example.sleep.db;
 
-public class User {
-    private int id;
+import org.litepal.crud.LitePalSupport;
+
+public class User extends LitePalSupport {
 
     private String name;
 
     private String password;
-
-    public User(String name, String password) {
-        this.name = name;
-        this.password = password;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
