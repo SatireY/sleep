@@ -1,6 +1,7 @@
 package com.example.sleep;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,6 +25,8 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.re_toolbar);
+        setSupportActionBar(toolbar);
         accountEdit = (EditText) findViewById(R.id.re_account);
         passwordEdit = (EditText) findViewById(R.id.re_password);
         register = (Button) findViewById(R.id.register1);

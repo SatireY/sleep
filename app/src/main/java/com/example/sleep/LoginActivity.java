@@ -1,9 +1,15 @@
 package com.example.sleep;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
@@ -16,6 +22,7 @@ import com.example.sleep.db.User;
 
 import org.litepal.LitePal;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LoginActivity extends BaseActivity implements View.OnClickListener{
@@ -40,7 +47,20 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        List<String> permissionList = new ArrayList<>();
+        if (ContextCompat.checkSelfPermission(LoginActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            permissionList.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        }
+        if (ContextCompat.checkSelfPermission(LoginActivity.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            permissionList.add(Manifest.permission.CAMERA);
+        }
+        if (!permissionList.isEmpty()) {
+            String[] permissions = permissionList.toArray(new String[permissionList.size()]);
+            ActivityCompat.requestPermissions(LoginActivity.this, permissions, 1);
+        }
         pref = PreferenceManager.getDefaultSharedPreferences(this);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.lo_toolbar);
+        setSupportActionBar(toolbar);
         accounEdit = (EditText) findViewById(R.id.lo_account);
         passwordEdit = (EditText) findViewById(R.id.lo_password);
         login = (Button) findViewById(R.id.login);
@@ -78,6 +98,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
                         }
                         editor.apply();
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        intent.putExtra("account",account);
                         startActivity(intent);
                         finish();
                         break;
@@ -94,6 +115,27 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
                 break;
                 default:
                     break;
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case 1:
+                if (grantResults.length > 0) {
+                    for (int result : grantResults) {
+                        if (result != PackageManager.PERMISSION_GRANTED) {
+                            Toast.makeText(this, "必须同意所有权限才能使用本程序", Toast.LENGTH_SHORT).show();
+                            finish();
+                            return;
+                        }
+                    }
+                } else {
+                    Toast.makeText(this, "发生未知错误", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+                break;
+                default:
         }
     }
 }
