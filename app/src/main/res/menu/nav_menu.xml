@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_friends"
+            android:icon="@drawable/nav_friends"
+            android:title="朋友" />
+        <item
+            android:id="@+id/nav_back"
+            android:icon="@drawable/ic_back"
+            android:title="注销用户"/>
+        <item
+            android:id="@+id/nav_setting"
+            android:icon="@drawable/ic_settings"
+            android:title="修改头像"/>
+        <item
+            android:id="@+id/nav_exit"
+            android:icon="@drawable/ic_home"
+            android:title="退出程序"/>
+    </group>
+</menu>
