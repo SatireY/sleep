@@ -1,1 +1,12 @@
 # sleep
+自定义ToolBar：在MainActivity里搭配AppBarLayout
+列表下拉刷新:在SelectMusicActivity中实现 下拉即可刷新 RecyclerView适配器为MusicAdapter
+多页滑动效果：在MainActivity中布局ViewPager + TabLayout 定义了两个碎片 RecentSleepFragment和SleepFragment
+侧滑栏效果：在MainActivity中实现
+加载效果：ProgressDialog搭配刷新时会出现
+网络请求：在util包下的HttpUtil下实现
+
+权限申请流程:在第一次运行本程序会直接进行申请 在LoginActivity中实现
+会用拍照，相册选择图片：在MainActivity的侧滑栏中点击用户头像即可选择
+多线程进行网络请求：在util包下的HttpUtil下实现
+使用数据库：利用LitePal框架将本程序的用户信息（用户名，密码）存进数据库
