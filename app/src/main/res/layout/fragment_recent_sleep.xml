@@ -3,15 +3,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RecentSleepFragment">
+    tools:context=".RecentSleepFragment"
+    android:orientation="vertical">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center_vertical"
-        android:textSize="100sp"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:textSize="25sp"
         android:textColor="#999"
-        android:text="您最近睡眠时间记录：" />
+        android:text="您最近一次睡眠时间记录：" />
+
+    <TextView
+        android:id="@+id/record"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="#999" />
 
 </LinearLayout>

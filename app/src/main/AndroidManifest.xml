@@ -14,6 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".SelectMusicActivity"
+            android:label="选择入眠曲"></activity>
         <activity
             android:name=".RegisterActivity"
             android:label="注册" />
@@ -26,8 +28,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"
-            android:label=""/>
+        <activity
+            android:name=".MainActivity"
+            android:label="" />
     </application>
 
 </manifest>
